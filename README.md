@@ -1,7 +1,12 @@
 
-<p style="display: flex; justify-content: center;">
-    <img src="https://i.ibb.co/h7hg8PL/logo-Botom-Info.png" width="300">
+<p style="display: flex; justify-content: center; align-items: center; width: 100%; margin: 0;">
+    <img src="https://i.ibb.co/h7hg8PL/logo-Botom-Info.png" width="300" style="height: auto;">
 </p>
+
+
+
+
+
 
 
 
