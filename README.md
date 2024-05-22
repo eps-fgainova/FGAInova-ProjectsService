@@ -1,7 +1,8 @@
 
 <p style="display: flex; justify-content: center;">
-    <img src="https://i.ibb.co/h7hg8PL/logo-Botom-Info.png" style="max-width: 300px; height: auto;">
+    <img src="https://i.ibb.co/h7hg8PL/logo-Botom-Info.png" width="300">
 </p>
+
 
 
 # FGA Inova - Back End 📢
