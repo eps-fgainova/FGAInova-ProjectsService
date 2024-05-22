@@ -1,7 +1,8 @@
-
-<p style="display: flex; justify-content: center; align-items: center; width: 100%; margin: 0;">
-    <img src="https://i.ibb.co/h7hg8PL/logo-Botom-Info.png" width="300" style="height: auto;">
+<div align="center">
+<p style="display: flex; justify-content: center;">
+    <img src='https://i.ibb.co/h7hg8PL/logo-Botom-Info.png' width="300" height="auto">
 </p>
+</div>
 
 
 
