@@ -1,5 +1,5 @@
 
-<p align='center'>
+<p style="display: flex; justify-content: center;">
     <img src='https://i.ibb.co/h7hg8PL/logo-Botom-Info.png' width="300" height="auto">
 </p>
 
@@ -15,7 +15,7 @@ Repositório voltado para o desenvolvimento do serviço de autenticação de usu
 | 16/0141842 | Philipe Rosa Serafim             |
 
 
-## Sobre 🍟
+## Sobre 📣
 
 O FGAInova se trata de uma aplicação web voltada para o marketing digital de projetos de inovação desenvolvidos em ambiente universitário. Após o cadastro, o usuário pode promover suas ideias e conectar-se com uma comunidade de estudantes, pesquisadores e profissionais.
 
