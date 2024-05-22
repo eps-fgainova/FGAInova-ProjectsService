@@ -1,7 +1,8 @@
 
 <p style="display: flex; justify-content: center;">
-    <img src='https://i.ibb.co/h7hg8PL/logo-Botom-Info.png' width="300" height="auto">
+    <img src="https://i.ibb.co/h7hg8PL/logo-Botom-Info.png" style="width: 300px; height: auto;">
 </p>
+
 
 # FGA Inova - Back End 📢
 Repositório voltado para o desenvolvimento do serviço de autenticação de usuário da aplicação da disciplina "Engenharia De Produto De Software" da UnB no Semestre 2024/1 do Grupo 04. Para mais detalhes consultar a documentação do projeto <a href="https://fgaad-docs-fga-eps-rmc-marketing-digital-g4-2-fe120e506e2a802aa.gitlab.io/#/" target="_blank">AQUI!</a> 
