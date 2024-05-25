@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 const { Pessoa } = require('../model/pessoa');
 
 class PessoaController {
@@ -7,7 +8,7 @@ class PessoaController {
     if (this.constructor === PessoaController) {
       throw new Error('Classe Abstrata não pode ser instanciada!');
     }
-    const { Model } = options;
+    const { Model } = options;    
 
     if (Model) {
       this.Model = Model;
@@ -55,6 +56,21 @@ class PessoaController {
       res.send(result);
     } catch (err) {
       res.send({ err: err.message });
+    }
+  }
+
+  async userInfoById(req, res) {
+    try {
+      const userId = req.params.id; // Captura o ID do usuário dos parâmetros da requisição
+      const result = await this.Model.findById(userId); // Busca o usuário pelo ID
+  
+      if (!result) {
+        return res.status(404).send({ message: 'Usuário não encontrado' });
+      }
+  
+      res.send(result);
+    } catch (err) {
+      res.status(500).send({ err: err.message }); // Retorna um erro 500 em caso de erro no servidor
     }
   }
 

@@ -15,8 +15,14 @@ routes.post('/signin', AutenticacaoController.signIn);
 // Cliente
 const clienteController = new ClienteController();
 routes.post('/cliente', (req, res) => clienteController.create(req, res));
+
+// Retornar todos os clientes
 routes.get('/cliente/all', verificaToken, (req, res) =>
   clienteController.index(req, res),
+);
+// Retornar info do usuário
+routes.get('/cliente/:id', verificaToken, (req, res) =>
+  clienteController.userInfoById(req, res),
 );
 routes.delete('/cliente/:email', verificaToken, (req, res) =>
   clienteController.destroy(req, res),
