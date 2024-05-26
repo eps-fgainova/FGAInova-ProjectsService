@@ -67,6 +67,7 @@ class ProjetoController {
         descricaoCurta,
         linksRedesSociais,
         linkVideo,
+        tags,
       } = req.body;
       projeto.titulo = titulo || projeto.titulo;
       projeto.descricao = descricao || projeto.descricao;
@@ -74,6 +75,7 @@ class ProjetoController {
       projeto.linksRedesSociais =
         linksRedesSociais || projeto.linksRedesSociais;
       projeto.linkVideo = linkVideo || projeto.linkVideo;
+      projeto.tags = tags || projeto.tags;
 
       await projeto.save();
       res.status(200).send(projeto);
