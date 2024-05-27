@@ -39,6 +39,11 @@ routes.get('/projeto/:id', verificaToken, (req, res) => ProjetoController.getByI
 routes.put('/projeto/:id', verificaToken, (req, res) => ProjetoController.update(req, res));
 routes.delete('/projeto/:id', verificaToken, (req, res) => ProjetoController.delete(req, res));
 
+// Projetos - Rota sem autenticação para listar todos os projetos
+routes.get('/projetos/all', (req, res) => ProjetoController.listAll(req, res));
+
+// Projetos - Rota sem autenticação para listar os 3 primeiros projetos
+routes.get('/projetos/top3', (req, res) => ProjetoController.listTopThree(req, res));
 
 
 module.exports = routes;

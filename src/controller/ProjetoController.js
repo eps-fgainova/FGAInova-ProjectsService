@@ -31,7 +31,7 @@ class ProjetoController {
     }
   }
 
-  async list(req, res) {
+  async list(req, res) {    
     try {
       const projetos = await Projeto.find({ pessoaId: req.pessoaId });
       res.status(200).send(projetos);
@@ -39,6 +39,24 @@ class ProjetoController {
       res
         .status(400)
         .send({ error: 'Erro ao listar projetos', details: error });
+    }
+  }
+
+  async listAll(req, res) {
+    try {
+      const projetos = await Projeto.find({});
+      res.status(200).send(projetos);
+    } catch (error) {
+      res.status(400).send({ error: 'Erro ao listar projetos', details: error });
+    }
+  }
+
+  async listTopThree(req, res) {
+    try {
+      const projetos = await Projeto.find({}).limit(3);
+      res.status(200).send(projetos);
+    } catch (error) {
+      res.status(400).send({ error: 'Erro ao listar projetos', details: error });
     }
   }
 
@@ -101,6 +119,7 @@ class ProjetoController {
         .send({ error: 'Erro ao remover projeto', details: error });
     }
   }
+  
 }
 
 module.exports = new ProjetoController();
