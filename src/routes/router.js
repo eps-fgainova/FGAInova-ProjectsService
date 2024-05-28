@@ -45,5 +45,8 @@ routes.get('/projetos/all', (req, res) => ProjetoController.listAll(req, res));
 // Projetos - Rota sem autenticação para listar os 3 primeiros projetos
 routes.get('/projetos/top3', (req, res) => ProjetoController.listTopThree(req, res));
 
+// Projetos - Rota sem autenticação para buscar projeto
+routes.get('/projetos/public/:id', (req, res) => ProjetoController.getByIdPublic(req, res));
+
 
 module.exports = routes;
