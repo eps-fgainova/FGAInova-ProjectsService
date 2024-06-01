@@ -6,7 +6,7 @@ const ProjetoController = require('../controller/ProjetoController');
 const routes = new Router();
 
 routes.get('/', (req, res) => {
-  return res.send({ message: 'API Online! =)' });
+  return res.send({ message: 'API Online! =) PROJETO' });
 });
 
 // Rotas de Projeto
