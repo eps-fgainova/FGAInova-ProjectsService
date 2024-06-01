@@ -1,29 +1,32 @@
-// config/multer.js
 const multer = require('multer');
-// const path = require('path');
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
+const cloudinary = require('cloudinary').v2;
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'uploads/');
-  },
-  filename: (req, file, cb) => {
-    cb(null, `${Date.now()}-${file.originalname}`);
+cloudinary.config({
+  cloud_name: 'dzsy3q6bi',
+  api_key: '545492636717934',
+  api_secret: 'fS4XzJEpPMqoBlH6Q-fvNbKXzuI',
+});
+
+const storage = new CloudinaryStorage({
+  cloudinary,
+  params: async (req, file) => {
+    let folder = 'projetos';
+    if (file.fieldname === 'banner') {
+      folder += '/banners';
+    } else if (file.fieldname === 'logo') {
+      folder += '/logos';
+    } else if (file.fieldname === 'imagens') {
+      folder += '/imagens';
+    }
+    return {
+      folder,
+      format: 'png',
+      public_id: file.originalname,
+    };
   },
 });
 
-const fileFilter = (req, file, cb) => {
-  const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
-  if (allowedTypes.includes(file.mimetype)) {
-    cb(null, true);
-  } else {
-    cb(new Error('Tipo de arquivo inválido'), false);
-  }
-};
+const upload = multer({ storage });
 
-const upload = multer({
-  storage,
-  fileFilter,
-  limits: { fileSize: 1024 * 1024 * 5 }, // Limite de 5MB por arquivo
-});
-
-module.exports = upload;
+module.exports = { upload, cloudinary };
