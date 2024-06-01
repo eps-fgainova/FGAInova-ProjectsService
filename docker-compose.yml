@@ -1,14 +1,14 @@
 version: '3'
 services:
   db: 
-    container_name: db_fga_inova
+    container_name: db_fga_inova_project
     image: mongo
     ports:
       - "27017:27027"
     command: mongod --quiet --logpath /dev/null
 
   api:
-    container_name: backend_fga_inova    
+    container_name: backend_fga_inova_project
     build: .
     restart: always
     command: npm start

@@ -33,7 +33,7 @@ class ProjetoController {
 
   async list(req, res) {    
     try {
-      const projetos = await Projeto.find({ pessoaId: req.pessoaId });
+      const projetos = await Projeto.find({ aId: req.pessoaId });
       res.status(200).send(projetos);
     } catch (error) {
       res
