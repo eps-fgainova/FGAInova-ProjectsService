@@ -1,5 +1,5 @@
 {
-  "name": "fga-inova-authservice",
+  "name": "fga-inova-ProjectsService",
   "version": "1.0.0",
   "description": "Repositório do projeto FGA Inova - Back  End",
   "main": "index.js",
@@ -8,13 +8,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/fga-eps-rmc/marketing-digital/g4.2/fga-inova-authservice"
+    "url": "https://gitlab.com/fga-eps-rmc/marketing-digital/g4.2/fga-inova-ProjectsService"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://gitlab.com/fga-eps-rmc/marketing-digital/g4.2/fga-inova-authservice/issues"
+    "url": "https://gitlab.com/fga-eps-rmc/marketing-digital/g4.2/fga-inova-ProjectsService/issues"
   },
   "homepage": "https://fgaad-docs-fga-eps-rmc-marketing-digital-g4-2-fe120e506e2a802aa.gitlab.io/#/",
   "dependencies": {
