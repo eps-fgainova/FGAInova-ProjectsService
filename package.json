@@ -4,7 +4,9 @@
   "description": "Repositório do projeto FGA Inova - Back  End",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./src/server.js"
+    "start": "node ./src/server.js",
+    "dev": "nodemon ./src/server.js",
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -30,6 +32,7 @@
     "validator": "^13.12.0"
   },
   "devDependencies": {
+    "chai": "^5.1.1",
     "eslint": "^7.10.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-config-prettier": "^6.12.0",
@@ -38,7 +41,13 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.3",
     "eslint-plugin-react-hooks": "^4.1.2",
+    "mocha": "^10.4.0",
     "nodemon": "^2.0.15",
-    "prettier": "^2.1.2"
+    "prettier": "^2.1.2",
+    "supertest": "^7.0.0"
+  },
+  "engines": {
+    "node": "20.10.0",
+    "npm": "10.2.3"
   }
 }
