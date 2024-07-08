@@ -16,7 +16,9 @@ class ProjetoController {
       // Extrair URLs das imagens
       const bannerUrl = req.files.banner ? req.files.banner[0].path : null;
       const logoUrl = req.files.logo ? req.files.logo[0].path : null;
-      const imagens = req.files.imagens ? req.files.imagens.map(file => file.path) : [];
+      const imagens = req.files.imagens
+        ? req.files.imagens.map(file => file.path)
+        : [];
 
       const projeto = new Projeto({
         titulo,
@@ -29,7 +31,7 @@ class ProjetoController {
         bannerUrl,
         logoUrl,
         imagens,
-      });      
+      });
 
       await projeto.save();
       res.status(201).send(projeto);
@@ -38,7 +40,7 @@ class ProjetoController {
     }
   }
 
-  async list(req, res) {    
+  async list(req, res) {
     try {
       const projetos = await Projeto.find({ aId: req.pessoaId });
       res.status(200).send(projetos);
@@ -53,7 +55,7 @@ class ProjetoController {
     try {
       const { titulo } = req.query;
       let query = {};
-      
+
       if (titulo) {
         // Usando uma expressão regular para realizar uma busca case-insensitive
         query = { titulo: new RegExp(titulo, 'i') };
@@ -62,7 +64,9 @@ class ProjetoController {
       const projetos = await Projeto.find(query);
       res.status(200).send(projetos);
     } catch (error) {
-      res.status(400).send({ error: 'Erro ao listar projetos', details: error });
+      res
+        .status(400)
+        .send({ error: 'Erro ao listar projetos', details: error });
     }
   }
 
@@ -71,7 +75,9 @@ class ProjetoController {
       const projetos = await Projeto.find({}).limit(3);
       res.status(200).send(projetos);
     } catch (error) {
-      res.status(400).send({ error: 'Erro ao listar projetos', details: error });
+      res
+        .status(400)
+        .send({ error: 'Erro ao listar projetos', details: error });
     }
   }
 
@@ -86,7 +92,6 @@ class ProjetoController {
       res.status(400).send({ error: 'Erro ao buscar projeto', details: error });
     }
   }
-
 
   async getByIdPublic(req, res) {
     try {
@@ -106,7 +111,7 @@ class ProjetoController {
       if (!projeto || projeto.pessoaId.toString() !== req.pessoaId) {
         return res.status(404).send({ error: 'Projeto não encontrado' });
       }
-  
+
       const {
         titulo,
         descricao,
@@ -114,16 +119,17 @@ class ProjetoController {
         linksRedesSociais,
         linkVideo,
         tags,
-        removedImages // Novo campo para URLs de imagens removidas
+        removedImages, // Novo campo para URLs de imagens removidas
       } = req.body;
-  
+
       projeto.titulo = titulo || projeto.titulo;
       projeto.descricao = descricao || projeto.descricao;
       projeto.descricaoCurta = descricaoCurta || projeto.descricaoCurta;
-      projeto.linksRedesSociais = linksRedesSociais || projeto.linksRedesSociais;
+      projeto.linksRedesSociais =
+        linksRedesSociais || projeto.linksRedesSociais;
       projeto.linkVideo = linkVideo || projeto.linkVideo;
       projeto.tags = tags || projeto.tags;
-  
+
       // Lidar com novos arquivos de imagem
       if (req.files) {
         if (req.files.banner) {
@@ -137,17 +143,21 @@ class ProjetoController {
           projeto.imagens = [...projeto.imagens, ...newImagePaths]; // Adicione novas imagens
         }
       }
-  
+
       // Remover imagens conforme necessário
       if (removedImages && removedImages.length > 0) {
-        projeto.imagens = projeto.imagens.filter(imageUrl => !removedImages.includes(imageUrl));
+        projeto.imagens = projeto.imagens.filter(
+          imageUrl => !removedImages.includes(imageUrl),
+        );
         // Lógica adicional para excluir os arquivos fisicamente, se necessário
       }
-  
+
       await projeto.save();
       res.status(200).send(projeto);
     } catch (error) {
-      res.status(400).send({ error: 'Erro ao atualizar projeto', details: error });
+      res
+        .status(400)
+        .send({ error: 'Erro ao atualizar projeto', details: error });
     }
   }
 
@@ -172,10 +182,11 @@ class ProjetoController {
       const projetos = await Projeto.find({ pessoaId: req.pessoaId });
       res.status(200).send(projetos);
     } catch (error) {
-      res.status(400).send({ error: 'Erro ao listar projetos do usuário', details: error });
+      res
+        .status(400)
+        .send({ error: 'Erro ao listar projetos do usuário', details: error });
     }
   }
-  
 }
 
 module.exports = new ProjetoController();
