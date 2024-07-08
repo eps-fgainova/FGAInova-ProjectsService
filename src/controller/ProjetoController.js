@@ -1,3 +1,4 @@
+/* eslint-disable prefer-const */
 /* eslint-disable consistent-return */
 const { Projeto } = require('../model/project');
 
@@ -53,14 +54,23 @@ class ProjetoController {
 
   async listAll(req, res) {
     try {
-      const { titulo } = req.query;
+      const { titulo, tags } = req.query;
       let query = {};
-
+  
+      // Construir a consulta para o título, se fornecido
       if (titulo) {
-        // Usando uma expressão regular para realizar uma busca case-insensitive
-        query = { titulo: new RegExp(titulo, 'i') };
+        query.titulo = new RegExp(titulo, 'i'); // 'i' para case-insensitive
       }
-
+  
+      // Construir a consulta para tags, se fornecidas
+      if (tags) {
+        const tagsArray = tags.split(',').map(tag => tag.trim().toLowerCase()); // Transformar as tags em minúsculas
+        query.tags = {
+          $in: tagsArray.map(tag => new RegExp(`^${tag}$`, 'i')) // Usar RegExp para case-insensitive
+        };
+      }
+  
+      // Buscar projetos com base na consulta construída
       const projetos = await Projeto.find(query);
       res.status(200).send(projetos);
     } catch (error) {
@@ -69,6 +79,8 @@ class ProjetoController {
         .send({ error: 'Erro ao listar projetos', details: error });
     }
   }
+  
+  
 
   async listTopThree(req, res) {
     try {
